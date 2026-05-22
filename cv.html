@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedro Iván Medina Reyes - Instructor IA y Dashboards</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.7;
+            color: #333;
+            background: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        header {
+            background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+            color: white;
+            padding: 60px 50px;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            color: #ecf0f1;
+            font-weight: 500;
+        }
+        
+        .credentials {
+            font-size: 1em;
+            color: #bdc3c7;
+            margin-bottom: 20px;
+        }
+        
+        .tagline {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin: 25px auto;
+            max-width: 700px;
+            color: #ecf0f1;
+        }
+        
+        .contact {
+            margin-top: 25px;
+            font-size: 0.95em;
+        }
+        
+        .contact-item {
+            display: inline-block;
+            margin: 0 15px;
+            color: #ecf0f1;
+        }
+        
+        .contact a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        
+        .contact a:hover {
+            text-decoration: underline;
+        }
+        
+        section {
+            padding: 50px;
+        }
+        
+        section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        h2 {
+            font-size: 2em;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #3498db;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #2c3e50;
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        
+        .intro-text {
+            font-size: 1.1em;
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        
+        .highlight-box {
+            background: #e8f4f8;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 25px 0;
+            border-radius: 4px;
+        }
+        
+        ul {
+            list-style: none;
+            margin: 20px 0;
+        }
+        
+        li {
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            color: #555;
+        }
+        
+        li:before {
+            content: "▸";
+            position: absolute;
+            left: 0;
+            color: #3498db;
+            font-weight: bold;
+        }
+        
+        .job-block {
+            margin: 30px 0;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            color: #2c3e50;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .period {
+            color: #7f8c8d;
+            font-style: italic;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .education-item, .cert-item {
+            margin: 20px 0;
+            padding: 15px;
+            background: white;
+            border-radius: 4px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .institution {
+            font-weight: 600;
+            color: #2c3e50;
+            font-size: 1.1em;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            text-align: center;
+            padding: 60px 50px;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            border-bottom: 3px solid white;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+        
+        .cta-section p {
+            font-size: 1.15em;
+            margin: 25px 0;
+            line-height: 1.7;
+        }
+        
+        .cta-buttons {
+            margin-top: 30px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2980b9;
+            padding: 15px 35px;
+            margin: 10px;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 1.1em;
+            transition: transform 0.2s;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        @media (max-width: 768px) {
+            header, section, .cta-section {
+                padding: 30px 20px;
+            }
+            
+            h1 {
+                font-size: 2em;
+            }
+            
+            h2 {
+                font-size: 1.6em;
+            }
+            
+            .contact-item {
+                display: block;
+                margin: 10px 0;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 10px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Pedro Iván Medina Reyes</h1>
+            <div class="subtitle">Instructor especialista en Inteligencia Artificial y Dashboards para Empresas</div>
+            <div class="credentials">Maestría en Negocios | Ingeniero en Sistemas Computacionales</div>
+            <div class="tagline">
+                Ayudo a empresarios y equipos directivos a <strong>convertir datos en decisiones claras</strong>, 
+                utilizando <strong>Inteligencia Artificial, dashboards y herramientas de Google</strong> de forma 
+                práctica, accesible y orientada a resultados.
+            </div>
+            <div class="contact">
+                <span class="contact-item">📍 Culiacán, Sinaloa</span>
+                <span class="contact-item">📧 <a href="mailto:pedro@gsuite4pymes.com.mx">pedro@gsuite4pymes.com.mx</a></span>
+                <span class="contact-item">📱 667.390.0992</span>
+            </div>
+        </header>
+
+        <section>
+            <h2>¿En qué puedo ayudarte?</h2>
+            <p class="intro-text">
+                Capacito y asesoro a empresas que necesitan <strong>mejorar su toma de decisiones</strong>, 
+                <strong>ordenar su información</strong> y <strong>aprovechar la tecnología sin complicaciones</strong>.
+            </p>
+            <p class="intro-text">
+                Mi enfoque no es técnico, es <strong>estratégico y práctico</strong>, pensado para directores, 
+                empresarios y equipos que necesitan resultados reales.
+            </p>
+        </section>
+
+        <section>
+            <h2>Especialidades</h2>
+            <ul>
+                <li>Inteligencia Artificial aplicada al negocio (ChatGPT | NotebookLM | Gemini | Claude)</li>
+                <li>Diseño e implementación de dashboards directivos</li>
+                <li>Capacitación e implementación de Google Sheets para análisis y toma de decisiones</li>
+                <li>Google Looker Studio (visualización ejecutiva)</li>
+                <li>Migración empresarial a Google Workspace</li>
+                <li>Automatización de procesos con Apps Script</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Experiencia Profesional</h2>
+            
+            <div class="job-block">
+                <div class="job-title">Instructor especialista en Inteligencia Artificial y Dashboards</div>
+                <span class="period">2010 – a la fecha</span>
+                <ul>
+                    <li>Más de <strong>100 cursos y talleres impartidos</strong> a empresarios y equipos directivos</li>
+                    <li>Capacitación en Google Sheets, Google Workspace, Looker Studio e IA aplicada</li>
+                    <li>Desarrollo de contenidos educativos prácticos y ejecutivos</li>
+                    <li>Diseño de tableros directivos con KPIs personalizados</li>
+                    <li>Automatización de flujos de trabajo empresariales</li>
+                    <li>Instructor en cursos presenciales, privados y en línea</li>
+                </ul>
+
+                <h3>Cursos y talleres impartidos:</h3>
+                <ul>
+                    <li>Taller de Inteligencia Artificial (ChatGPT)</li>
+                    <li>Taller Ejecutivo: Google Sheets para la Toma de Decisiones</li>
+                    <li>Curso de Dashboards en Google Looker Studio</li>
+                    <li>Capacitación en Migración a Google Workspace</li>
+                    <li>Curso de Automatización con Apps Script para PYMEs</li>
+                </ul>
+            </div>
+
+            <div class="job-block">
+                <div class="job-title">Diseño y Desarrollo de Dashboards Directivos</div>
+                <span class="period">2019 – a la fecha</span>
+                <p>Consultoría a PYMEs para el análisis, diseño y desarrollo de tableros de indicadores completamente 
+                en línea, enfocados en información estratégica para la toma de decisiones.</p>
+                <div class="highlight-box">
+                    <strong>Herramientas:</strong> ChatGPT, Claude, Gemini, NotebookLM, Google Sheets (avanzado) | Google Looker Studio, Google Apps Scripts.
+                </div>
+            </div>
+
+
+        </section>
+
+        <section>
+            <h2>Formación Académica</h2>
+            
+            <div class="education-item">
+                <div class="institution">Maestría en Administración de Negocios – Calidad y Productividad</div>
+                <div>Tec Milenio | 2020 – 2022 | En línea (Título)</div>
+            </div>
+
+            <div class="education-item">
+                <div class="institution">Maestría en Sistemas de Calidad y Productividad</div>
+                <div>Tecnológico de Monterrey – Universidad Virtual | 2001 – 2003 (Parcial)</div>
+            </div>
+
+            <div class="education-item">
+                <div class="institution">Ingeniería en Sistemas Computacionales (ISC)</div>
+                <div>Tecnológico de Monterrey – Campus Sinaloa | 1989 – 1993</div>
+                <div style="margin-top: 5px; color: #7f8c8d;">Mención Honorífica · Beca de Excelencia · Título y cédula profesional</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Certificaciones</h2>
+            <ul>
+                <li>White Belt Lean Six Sigma – 2022</li>
+                <li>Metodología Básica de Administración de Proyectos – 2021 (24 PDUs PMI)</li>
+                <li>Consultor SIMAPRO – 2014</li>
+                <li>Consultor SIGPROL – 2014</li>
+                <li>Taller Preparación PMP – 2013</li>
+                <li>Consultor México Emprende – 2010</li>
+                <li>Consultor PYME JICA – 2008</li>
+                <li>MOPROSOFT Nivel 1 – 2008</li>
+                <li>Certificación CONOCER – 2008</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Participación Social e Institucional</h2>
+            
+            <div class="education-item">
+                <div class="institution">Red de Negocios EXATEC – Tecnológico de Monterrey</div>
+                <div style="margin: 8px 0; font-weight: 500;">Presidente (Dic-2022 / Dic-2024)</div>
+                <p>Durante mi gestión, consolidamos la red como una de las más fuertes, activas y mejor organizadas del sistema Tec de Monterrey a nivel nacional. Fortalecimos las alianzas entre empresarios EXATEC, convencido de que en tiempos de incertidumbre como los que vivimos, fortalecer nuestras comunidades y lazos empresariales no solo nos hace más fuertes como sector, sino que también fortalece la comunidad donde vivimos.</p>
+            </div>
+
+            <div class="education-item">
+                <div class="institution">CANACO SERVYTUR Culiacán – Red de Negocios</div>
+                <div style="margin: 8px 0; font-weight: 500;">Miembro del comité organizador y coordinador de oradores (2020 - A la fecha)</div>
+                <p>Como coordinador, he tenido el privilegio de invitar oradores de alto impacto que trabajan para grandes empresas, inspirando al grupo a aspirar a ser mejores cada día. Los eventos han rebasado constantemente la capacidad del lugar, demostrando el hambre de nuestra comunidad empresarial por crecer y aprender. Estos desayunos sacan al sector de su zona de confort, abren la mente a nuevas posibilidades y nos motivan a levantarnos cada día buscando mejorar.</p>
+            </div>
+
+            <div class="education-item">
+                <div class="institution">Construyendo Paz</div>
+                <div style="margin: 8px 0; font-weight: 500;">(Agosto 2024 - A la fecha)</div>
+                <p>Participo activamente en esta asociación civil comprometida con transformar el futuro de nuestra ciudad. Ayudamos a estudiantes de primaria a mejorar y aspirar a construir una mejor comunidad, mediante actividades de cultura, educación y mejoras en infraestructura escolar. Mi aporte específico es desarrollar e implementar proyectos de tecnología, tableros e indicadores que fortalecen la administración y el control de la asociación. Creo firmemente que todos debemos poner nuestro granito de arena para construir una mejor ciudad. Nuestra misión es que todos los niños aspiren a convertirse en ciudadanos de bien y contribuir a erradicar la narcocultura de nuestra localidad.</p>
+            </div>
+        </section>
+
+        <div class="cta-section">
+            <h2>¿Listo para mejorar la toma de decisiones en tu empresa?</h2>
+            <p>
+                Si buscas <strong>claridad</strong>, <strong>control</strong> y <strong>mejores decisiones</strong> 
+                apoyadas en datos, dashboards e inteligencia artificial, podemos trabajar juntos.
+            </p>
+            <div class="cta-buttons">
+                <a href="https://wa.me/526673900992" target="_blank" class="cta-button">📱 667.390.0992</a>
+                <a href="mailto:pedro@gsuite4pymes.com.mx?subject=Solicitud de información" class="cta-button">📧 Enviar correo</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

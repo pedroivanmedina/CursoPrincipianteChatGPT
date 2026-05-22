@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Curso Experto en ChatGPT | Domina la IA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #10a37f; /* Verde ChatGPT */
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --accent: #f59e0b; /* Naranja para CTA */
+            --text-gray: #334155;
+        }
+        
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: var(--text-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- Barra de Urgencia --- */
+        .urgency-bar {
+            background: linear-gradient(90deg, #b45309, #d97706, #b45309);
+            background-size: 200% 100%;
+            animation: shimmer 3s infinite linear;
+            color: white;
+            text-align: center;
+            padding: 10px 20px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            letter-spacing: 0.02em;
+            position: sticky;
+            top: 0;
+            z-index: 1001;
+        }
+        @keyframes shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        .urgency-bar span.spots {
+            background: white;
+            color: #b45309;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-weight: 800;
+            margin: 0 6px;
+        }
+        .urgency-bar .countdown {
+            font-size: 1.05rem;
+            font-weight: 800;
+            background: rgba(0,0,0,0.2);
+            padding: 2px 10px;
+            border-radius: 20px;
+            margin-left: 8px;
+            letter-spacing: 0.05em;
+        }
+
+        /* --- Precio --- */
+        .price-block {
+            margin: 30px auto 10px;
+            display: inline-block;
+        }
+        .price-old {
+            font-size: 1.3rem;
+            color: rgba(255,255,255,0.55);
+            text-decoration: line-through;
+            display: block;
+            margin-bottom: 4px;
+        }
+        .price-new {
+            font-size: 2.8rem;
+            font-weight: 900;
+            color: #fde68a;
+            display: block;
+            line-height: 1;
+        }
+        .price-label {
+            font-size: 0.85rem;
+            color: rgba(255,255,255,0.6);
+            margin-top: 6px;
+            display: block;
+        }
+
+        /* --- Barra de Navegación --- */
+        .navbar {
+            background-color: rgba(15, 23, 42, 0.95);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .logo-container img {
+            height: auto; 
+            width: 60%;
+            max-width: 250px;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-links a {
+            color: #e2e8f0;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links a:hover { color: var(--primary); }
+
+        /* Hero Section */
+        header {
+            background-color: var(--dark);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+            background-image: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        h1 { font-size: 3rem; margin-bottom: 10px; line-height: 1.2; }
+        .highlight { color: var(--primary); }
+        .subheadline { font-size: 1.5rem; max-width: 800px; margin: 0 auto 30px auto; opacity: 0.9; }
+
+        .cta-button {
+            background-color: var(--primary);
+            color: white;
+            padding: 18px 40px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: transform 0.2s, background 0.3s;
+            display: inline-block;
+            box-shadow: 0 4px 15px rgba(16, 163, 127, 0.4);
+            max-width: 90%;
+            box-sizing: border-box;
+        }
+
+        .cta-button:hover { transform: scale(1.05); background-color: #0d8c6c; }
+
+        .container { max-width: 1100px; margin: 0 auto; padding: 60px 20px; }
+
+        /* Pain Points */
+        .pain-section { background-color: #fff; text-align: center; }
+        .pain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .pain-card {
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border-top: 5px solid #ef4444;
+        }
+        .pain-icon { font-size: 2.5rem; margin-bottom: 15px; display: block; }
+
+        /* --- Sección de Videos --- */
+        .video-section {
+            background-color: #f1f5f9;
+            padding: 50px 20px;
+            text-align: center;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1100px;
+            margin: 30px auto 0 auto;
+        }
+
+        .video-container {
+            background: #000;
+            aspect-ratio: 16/9;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        .video-container iframe { width: 100%; height: 100%; border: none; }
+
+        /* --- Benefits / Solution --- */
+        .solution-section { background-color: var(--light); }
+        
+        .benefit-item { 
+            display: flex; 
+            align-items: flex-start; 
+            margin-bottom: 30px; 
+        }
+
+        .benefit-item h3 {
+            margin-top: 0; 
+            margin-bottom: 10px;
+        }
+
+        .check-icon { 
+            color: var(--primary); 
+            font-size: 1.5rem; 
+            margin-right: 15px; 
+            min-width: 30px;
+            line-height: 1; 
+        }
+
+        /* Syllabus */
+        .syllabus-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .module { background: white; border: 1px solid #e2e8f0; padding: 25px; border-radius: 8px; }
+
+        /* Instructor */
+        .instructor-section { background-color: var(--dark); color: white; padding: 60px 20px; }
+        .instructor-flex-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .qr-wrapper img { width: 180px; height: 220px; border-radius: 16px; border: 4px solid white; background: white; object-fit: cover; object-position: top; }
+        
+        .wa-direct-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 15px;
+            color: #25D366;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.1rem;
+            padding: 8px 16px;
+            border: 2px solid #25D366;
+            border-radius: 50px;
+            transition: all 0.3s;
+        }
+
+        /* --- Testimonios --- */
+        .testimonials-section {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            padding: 60px 20px;
+            text-align: center;
+            border-top: 1px solid #d1fae5;
+            border-bottom: 1px solid #d1fae5;
+        }
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: 40px auto 0;
+        }
+        .testimonial-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 4px 20px rgba(16,163,127,0.08);
+            border: 1px solid #d1fae5;
+            text-align: left;
+            position: relative;
+        }
+        .testimonial-card::before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.15;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            line-height: 1;
+            font-family: Georgia, serif;
+        }
+        .testimonial-stars {
+            color: #f59e0b;
+            font-size: 1.1rem;
+            margin-bottom: 12px;
+        }
+        .testimonial-text {
+            font-size: 0.97rem;
+            color: var(--text-gray);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .testimonial-avatar {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), #0d8c6c);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 800;
+            font-size: 1rem;
+            flex-shrink: 0;
+        }
+        .testimonial-name {
+            font-weight: 700;
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+        .testimonial-role {
+            font-size: 0.82rem;
+            color: #64748b;
+        }
+
+        /* Final CTA */
+        .final-cta {
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        /* Portfolio / Recursos - AJUSTE DE SEPARACIÓN */
+        .portfolio-section { background-color: #fff; padding: 10px 20px 40px 20px; border-top: 1px solid #e2e8f0; }
+        .portfolio-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 15px; margin-top: 20px; }
+        .portfolio-link {
+            padding: 10px 20px;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+        }
+
+        /* Media Queries */
+        @media (max-width: 768px) {
+            h1 { font-size: 2rem; }
+            .navbar { flex-direction: column; gap: 15px; text-align: center; }
+            .logo-container img { margin: 0 auto; max-width: 280px; }
+            .instructor-flex-container { flex-direction: column; text-align: center; }
+            .benefit-item { text-align: left; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Barra de Urgencia -->
+<div class="urgency-bar">
+    ⚡ ¡Oferta de lanzamiento! Solo quedan <span class="spots" id="spots-count">7</span> lugares disponibles &nbsp;|&nbsp; Precio especial termina en: <span class="countdown" id="countdown">--:--:--</span>
+</div>
+
+<nav class="navbar">
+    <div class="logo-container"><img src="logo.jpeg" alt="Logo Marca"></div>
+    <div class="nav-links">
+        <a href="https://claude.ai/public/artifacts/4a7d379b-55f1-4b1a-9d23-88ea8dd180cd" target="_blank"><i class="fas fa-file-user"></i> Mi CV</a>
+        <a href="https://wa.me/message/JG7VSAITBDBVO1" target="_blank" style="color: #25D366;"><i class="fab fa-whatsapp"></i> Contacto</a>
+    </div>
+</nav>
+
+<header>
+    <h1>No compitas <em style="color: var(--primary);">contra</em> la IA,<br>compite <span class="highlight"><em>con</em></span> la IA.</h1>
+    <p class="subheadline">Integrar IA a tu negocio ya no es una ventaja. Es la línea entre crecer con estabilidad o perder relevancia de forma inevitable.</p>
+    <div class="price-block">
+        <span class="price-old">$1,250 MXN</span>
+        <span class="price-new">$999 MXN</span>
+        <span class="price-label">Pago único · Acceso de por vida a grabaciones</span>
+    </div>
+    <br><br>
+    <a href="#registro" class="cta-button" style="background-color: var(--accent); box-shadow: 0 4px 20px rgba(245, 158, 11, 0.5);">QUIERO DOMINAR CHATGPT AHORA</a>
+</header>
+
+<div class="pain-section">
+    <div class="container">
+        <h2 style="color: var(--dark); font-size: 2rem;">¿Te sientes identificado con esto?</h2>
+        <div class="pain-grid">
+            <div class="pain-card">
+                <span class="pain-icon">🛑</span>
+                <h3>Miedo a la Fuga de Datos</h3>
+                <p>"No subo contratos ni estados financieros porque me da miedo que se filtren."</p>
+            </div>
+            <div class="pain-card">
+                <span class="pain-icon">🤥</span>
+                <h3>Desconfianza en la IA</h3>
+                <p>"A veces inventa datos (alucinaciones) y no puedo confiar en ella para decisiones serias."</p>
+            </div>
+            <div class="pain-card">
+                <span class="pain-icon">🤯</span>
+                <h3>Caos Operativo</h3>
+                <p>"Tengo un desorden de chats y pierdo tiempo explicando siempre lo mismo a la IA."</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="solution-section">
+    <div class="container">
+        <h2 style="color: var(--primary); font-size: 2rem; text-align: center;">Transforma Miedos en Ventajas Competitivas</h2>
+        <div style="max-width: 800px; margin: 40px auto 0 auto;">
+            <div style="text-align: center; margin-bottom: 40px;">
+                <a href="https://claude.ai/public/artifacts/594c90da-6b07-4cb5-a9a8-fc4e7efa8415" class="portfolio-link" target="_blank" style="display: inline-block; padding: 15px 30px; font-size: 1rem;">
+                    <i class="fas fa-lightbulb"></i> Problema y necesidades
+                </a>
+            </div>
+            <div class="benefit-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <h3>Blindar tu Información (Chat Temporal)</h3>
+                    <p>La confidencialidad no es opcional. Aprende a configurar sesiones privadas donde tus datos financieros y legales nunca se guardan ni entrenan al modelo.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <h3>Eliminar Errores (Modelo Thinking)</h3>
+                    <p>Activa el "Pensamiento Profundo" para obligar a la IA a razonar antes de responder, obteniendo análisis precisos y cero alucinaciones.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <h3>Organizar tu Caos (Proyectos)</h3>
+                    <p>Crea espacios de trabajo aislados. Sube tu manual de marca una sola vez y haz que la IA responda siempre como un experto en TU negocio.</p>
+                </div>
+            </div>
+            <div class="benefit-item">
+                <span class="check-icon">✓</span>
+                <div>
+                    <h3>Automatizar lo Aburrido (Modo Agente)</h3>
+                    <p>Configura al Agente para que tome el control de tu navegador, llene formularios y redacte correos mientras tú te enfocas en vender.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="video-section">
+    <div class="container">
+        <h2 style="color: var(--dark); font-size: 2rem; margin-bottom: 5px;">Mira el Curso en Acción</h2>
+        <p style="text-align:center; color: var(--text-gray); margin-bottom: 0;">Estas son clases y demostraciones reales del contenido que aprenderás.</p>
+        <div class="video-grid">
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/g013k59Nki0" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/EyBvixMxbNo" allowfullscreen></iframe>
+            </div>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/FyEOKjo8ujE" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h2 style="text-align: center; margin-bottom: 20px; font-size: 2rem;">Tu Ruta de Aprendizaje (3 Sesiones Intensivas)</h2>
+    
+    <div style="text-align: center; margin-bottom: 40px;">
+        <a href="https://claude.ai/public/artifacts/82072e1f-b2e4-4d94-8a49-dd77bf45b9bf" target="_blank" class="portfolio-link" style="margin: 5px;">
+            <i class="fas fa-eye"></i> Ver temario en pantalla
+        </a>
+        <a href="temario.pdf" download target="_blank" class="portfolio-link" style="margin: 5px;">
+            <i class="fas fa-file-pdf"></i> Descargar temario (PDF)
+        </a>
+    </div>
+
+    <div class="syllabus-grid">
+        <div class="module">
+            <h3>📅 Sesión 1: Fundamentos y Organización Profesional</h3>
+            <ul>
+                <li>Introducción general al curso</li>
+                <li>Configuración esencial de ChatGPT</li>
+                <li>Modelos de pensamiento (Auto, Instant, Thinking)</li>
+                <li>Chat temporal y privacidad</li>
+                <li>Gestión de confidencialidad</li>
+                <li>Memoria y personalización</li>
+                <li>Administración de memoria</li>
+                <li>Proyectos como sistema de organización</li>
+                <li>Proyectos como espacios de trabajo</li>
+            </ul>
+        </div>
+        <div class="module">
+            <h3>🚀 Sesión 2: Herramientas de Productividad y Automatización</h3>
+            <ul>
+                <li>Herramientas integradas de ChatGPT</li>
+                <li>Crear imágenes con IA</li>
+                <li>Investigación avanzada en web</li>
+                <li>Estudio y aprendizaje asistido</li>
+                <li>Lienzo (Canvas) para edición de texto</li>
+                <li>Fuentes y conectores externos</li>
+                <li>Modo agente y automatización</li>
+            </ul>
+        </div>
+        <div class="module">
+            <h3>🤖 Sesión 3: GPTs y Maestría en Prompts</h3>
+            <ul>
+                <li>GPTs personalizados</li>
+                <li>Marketplace de GPTs</li>
+                <li>Diseño y entrenamiento de asistentes</li>
+                <li>Corrección de alucinaciones</li>
+                <li>Prompting directo con ChatGPT</li>
+                <li>GPTs especializados en prompts</li>
+                <li>Prompting desde plataforma OpenAI</li>
+                <li>Prompting con NotebookLM</li>
+                <li>Tendencias futuras de IA</li>
+                <li>Navegador Atlas y convergencia IA-Web</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="instructor-section">
+    <div class="container">
+        <div class="instructor-flex-container">
+            <div class="qr-wrapper"><img src="Foto PIMR.jpeg" alt="Pedro Medina"></div>
+            <div class="instructor-info">
+                <h2 style="font-size: 2rem;">Tu Instructor: Pedro Medina</h2>
+                <p>Ingeniero en Sistemas con Maestrías en Negocios y Productividad. Pedro no te enseñará teoría aburrida; te enseñará cómo él usa estas herramientas para ahorrar horas de trabajo y gestionar negocios reales.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="https://wa.me/message/JG7VSAITBDBVO1" class="wa-direct-link" target="_blank"><i class="fab fa-whatsapp"></i> Hablar con Pedro</a>
+                    <a href="https://claude.ai/public/artifacts/4a7d379b-55f1-4b1a-9d23-88ea8dd180cd" class="wa-direct-link" target="_blank" style="color: var(--primary); border-color: var(--primary);"><i class="fas fa-file-user"></i> C.V.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Testimonios -->
+<div class="testimonials-section">
+    <div style="max-width: 1100px; margin: 0 auto;">
+        <h2 style="font-size: 2rem; color: var(--dark); margin-bottom: 5px;">Lo que dicen quienes ya lo tomaron</h2>
+        <p style="color: #64748b; font-size: 1rem;">Empresarios y profesionistas que transformaron su forma de trabajar.</p>
+        <div class="testimonials-grid">
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Llegué sin saber casi nada de ChatGPT y salí con una forma completamente diferente de gestionar mi empresa. Lo de los Proyectos me cambió la vida: ya no pierdo tiempo explicando contexto cada vez que abro un chat nuevo.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">MR</div>
+                    <div>
+                        <div class="testimonial-name">Marcos Rodríguez</div>
+                        <div class="testimonial-role">Director General, Constructora MR</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Tenía mucho miedo de subir información confidencial de mis clientes. El módulo de Chat Temporal me quitó ese miedo de encima. Ahora uso ChatGPT a diario para revisar contratos sin ninguna preocupación.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">SV</div>
+                    <div>
+                        <div class="testimonial-name">Sofía Valenzuela</div>
+                        <div class="testimonial-role">Abogada corporativa, despacho propio</div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-card">
+                <div class="testimonial-stars">★★★★★</div>
+                <p class="testimonial-text">Pedro explica todo con ejemplos reales de negocios, nada de teoría vacía. El Modo Agente me pareció increíble: lo que antes me tomaba 2 horas de trabajo administrativo, ahora lo delego en minutos.</p>
+                <div class="testimonial-author">
+                    <div class="testimonial-avatar">JL</div>
+                    <div>
+                        <div class="testimonial-name">Jorge Leal</div>
+                        <div class="testimonial-role">Gerente de Operaciones, LogiMex</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="final-cta" id="registro">
+    <h2 style="font-size: 2rem;">El futuro pertenece a quienes dominan la IA hoy.</h2>
+    <p style="font-size: 1.2rem; margin-bottom: 30px;">Con la llegada de herramientas como el navegador <strong>Atlas</strong>, quien no se actualice, desaparecerá.</p>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSemYuen_Rb1M5556Z8oSoSyXLbXAgB7Ohij6jSbpkmbxUJY7w/viewform" class="cta-button" style="background-color: var(--accent);" target="_blank">APARTAR MI LUGAR AHORA</a>
+    <p style="margin-top: 20px; font-size: 0.9rem; opacity: 0.7;">Garantía de satisfacción. Cupo limitado para atención personalizada.</p>
+</div>
+
+<footer style="background: #eee; text-align: center; padding: 20px; font-size: 0.8rem;">
+    <p>&copy; 2026 Curso Experto en ChatGPT. Todos los derechos reservados.</p>
+</footer>
+
+<script>
+    // Countdown: 48 horas desde la primera visita, persistido en sessionStorage
+    (function() {
+        const KEY = 'cta_deadline';
+        let deadline = sessionStorage.getItem(KEY);
+        if (!deadline) {
+            deadline = Date.now() + 48 * 60 * 60 * 1000;
+            sessionStorage.setItem(KEY, deadline);
+        }
+        deadline = parseInt(deadline);
+
+        function update() {
+            const now = Date.now();
+            const diff = deadline - now;
+            const el = document.getElementById('countdown');
+            if (!el) return;
+            if (diff <= 0) {
+                el.textContent = '00:00:00';
+                return;
+            }
+            const h = Math.floor(diff / 3600000);
+            const m = Math.floor((diff % 3600000) / 60000);
+            const s = Math.floor((diff % 60000) / 1000);
+            el.textContent =
+                String(h).padStart(2,'0') + ':' +
+                String(m).padStart(2,'0') + ':' +
+                String(s).padStart(2,'0');
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+</script>
+</body>
+</html>
